@@ -1,0 +1,48 @@
+menu "SenseBeyond CSI Receiver"
+
+config SENSEBEYOND_WIFI_SSID
+    string "Wi-Fi SSID"
+    default "SenseBeyond-CSI"
+    help
+        SSID of the network the receiver joins.
+
+config SENSEBEYOND_WIFI_PASSWORD
+    string "Wi-Fi Password"
+    default "sensebeyond"
+    help
+        WPA2 password. Leave empty for open networks.
+
+config SENSEBEYOND_BACKEND_URL
+    string "Backend Base URL"
+    default "http://192.168.1.100:8000"
+    help
+        Base URL for the SenseBeyond FastAPI backend (no trailing slash).
+
+config SENSEBEYOND_DEVICE_LABEL
+    string "Device Identifier"
+    default "esp32-receiver"
+    help
+        Identifier reported as the MAC label in CSI payloads. Use the board MAC for uniqueness.
+
+config SENSEBEYOND_POST_INTERVAL_MS
+    int "CSI Post Interval (ms)"
+    range 50 1000
+    default 200
+    help
+        Time window for batching CSI frames before posting to the backend.
+
+config SENSEBEYOND_HTTP_RETRY_MS
+    int "HTTP Retry Backoff (ms)"
+    range 200 10000
+    default 500
+    help
+        Delay before retrying failed HTTP posts.
+
+config SENSEBEYOND_MAX_QUEUE_DEPTH
+    int "CSI Queue Depth"
+    range 4 64
+    default 16
+    help
+        Maximum number of CSI frames buffered while awaiting transmission.
+
+endmenu

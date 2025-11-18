@@ -1,0 +1,5 @@
+{
+  "cmake.sourceDirectory": "K:/SenseBeyond/firmware/esp32-csi-sender",
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.pythonProjects": []
+}

@@ -1,0 +1,35 @@
+menu "SenseBeyond CSI Sender"
+
+config SENSEBEYOND_SENDER_SSID
+    string "SoftAP SSID"
+    default "SenseBeyond-CSI"
+    help
+        SSID broadcast by the sender board. Configure the receiver to join this network.
+
+config SENSEBEYOND_SENDER_PASSWORD
+    string "SoftAP Password"
+    default "sensebeyond"
+    help
+        WPA2 password for the SoftAP. Leave empty for an open network.
+
+config SENSEBEYOND_SENDER_CHANNEL
+    int "SoftAP Channel"
+    range 1 13
+    default 6
+    help
+        2.4 GHz channel number. Ensure the receiver and environment use the same channel.
+
+config SENSEBEYOND_TARGET_MAC
+    string "Target Receiver MAC"
+    default "24:0A:C4:12:34:56"
+    help
+        Destination MAC address for generated frames (format: aa:bb:cc:dd:ee:ff).
+
+config SENSEBEYOND_TX_INTERVAL_MS
+    int "Frame TX Interval (ms)"
+    range 5 1000
+    default 20
+    help
+        Period between injected null-data frames. Lower values increase CSI throughput at the cost of airtime.
+
+endmenu

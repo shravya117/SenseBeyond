@@ -1,0 +1,2 @@
+source K:/SenseBeyond/firmware/esp32-csi-receiver/.pio/build/esp32-csi-receiver/gdbinit/symbols
+source K:/SenseBeyond/firmware/esp32-csi-receiver/.pio/build/esp32-csi-receiver/gdbinit/connect
