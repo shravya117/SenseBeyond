@@ -1,9 +1,21 @@
-﻿# Python virtual envs
+﻿# Virtualenvs
 .venv/
 */.venv/
 backend/.venv/
 env/
 venv/
+
+# PlatformIO / build artifacts
+.pio/
+.pioenvs/
+.pio/build/
+*.map
+*.elf
+*.bin
+
 # Python artifacts
 *.pyc
 __pycache__/
+
+# Other
+*.log
