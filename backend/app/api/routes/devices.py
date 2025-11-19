@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Response
 
 from ...schemas.device import DeviceSettingsResponse, DeviceSettingsUpdate, DeviceStatus
 from ..deps import get_device_registry
@@ -22,6 +22,7 @@ async def update_device_settings(
     return registry.update_settings(mac_address, payload)
 
 
-@router.post("/clear", status_code=204)
-async def clear_devices(registry=Depends(get_device_registry)) -> None:
+@router.post("/clear", status_code=204, response_class=Response)
+async def clear_devices(registry=Depends(get_device_registry)) -> Response:
     registry.clear()
+    return Response(status_code=204)

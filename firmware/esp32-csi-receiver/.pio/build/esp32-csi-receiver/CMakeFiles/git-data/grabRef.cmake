@@ -18,7 +18,7 @@ set(HEAD_HASH)
 file(READ "K:/SenseBeyond/firmware/esp32-csi-receiver/.pio/build/esp32-csi-receiver/CMakeFiles/git-data/HEAD" HEAD_CONTENTS LIMIT 1024)
 
 string(STRIP "${HEAD_CONTENTS}" HEAD_CONTENTS)
-set(GIT_DIR "C:/Users/asus/.git")
+set(GIT_DIR "K:/SenseBeyond/.git")
 # handle git-worktree
 if(EXISTS "${GIT_DIR}/commondir")
 	file(READ "${GIT_DIR}/commondir" GIT_DIR_NEW LIMIT 1024)

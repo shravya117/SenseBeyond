@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "sensebeyond_csi_sender",
-    "project_version":    "1",
+    "project_version":    "6020b2ef-dirty",
     "project_path":       "K:/SenseBeyond/firmware/esp32-csi-sender",
     "idf_path":           "C:/Users/asus/.platformio/packages/framework-espidf",
     "build_dir":          "K:/SenseBeyond/firmware/esp32-csi-sender/.pio/build/esp32-csi-sender",

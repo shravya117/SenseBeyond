@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "sensebeyond_csi_receiver",
-    "project_version":    "1",
+    "project_version":    "6020b2ef-dirty",
     "project_path":       "K:/SenseBeyond/firmware/esp32-csi-receiver",
     "idf_path":           "C:/Users/asus/.platformio/packages/framework-espidf",
     "build_dir":          "K:/SenseBeyond/firmware/esp32-csi-receiver/.pio/build/esp32-csi-receiver",

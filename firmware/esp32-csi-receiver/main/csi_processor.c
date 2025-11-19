@@ -1,5 +1,6 @@
 #include "csi_processor.h"
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -107,11 +108,17 @@ static void csi_http_task(void *arg) {
         size_t body_len = 0;
         char *body = build_json_payload(packet, &body_len);
         if (body) {
-            int status = 0;
-            esp_err_t err = sense_http_client_post("/csi", body, body_len, &status);
-            if (err != ESP_OK || status >= 300) {
-                ESP_LOGE(TAG, "POST /csi failed err=%s status=%d", esp_err_to_name(err), status);
-                vTaskDelay(pdMS_TO_TICKS(CONFIG_SENSEBEYOND_HTTP_RETRY_MS));
+            printf("CSI_JSON:%s\n", body);
+            fflush(stdout);
+
+            const bool should_post = CONFIG_SENSEBEYOND_BACKEND_URL[0] != '\0';
+            if (should_post) {
+                int status = 0;
+                esp_err_t err = sense_http_client_post("/csi", body, body_len, &status);
+                if (err != ESP_OK || status >= 300) {
+                    ESP_LOGE(TAG, "POST /csi failed err=%s status=%d", esp_err_to_name(err), status);
+                    vTaskDelay(pdMS_TO_TICKS(CONFIG_SENSEBEYOND_HTTP_RETRY_MS));
+                }
             }
             free(body);
         }

@@ -3,13 +3,15 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Literal, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 
 PredictionLabel = Literal["empty", "human", "object", "unknown"]
 
 
 class InferenceEnvelope(BaseModel):
+    model_config = ConfigDict(protected_namespaces=())
+
     mac_address: str
     timestamp: datetime
     label: PredictionLabel

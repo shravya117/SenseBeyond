@@ -14,6 +14,7 @@ export function useInitialData(): void {
   const setTrainingAnnotations = useAppStore(
     (state) => state.setTrainingAnnotations
   );
+  const predictions = useAppStore((state) => state.predictions);
 
   useEffect(() => {
     async function bootstrap() {
@@ -34,9 +35,19 @@ export function useInitialData(): void {
         setTrainingAnnotations(annotations);
       } catch (error) {
         console.error("Failed to bootstrap dashboard", error);
+        // Keep existing predictions (hard-coded or from previous state)
       }
     }
 
-    void bootstrap();
-  }, [setPredictions, setDevices, setSignal, setTrainingAnnotations]);
+    // Only bootstrap if no predictions exist yet
+    if (predictions.length === 0) {
+      void bootstrap();
+    }
+  }, [
+    setPredictions,
+    setDevices,
+    setSignal,
+    setTrainingAnnotations,
+    predictions.length,
+  ]);
 }

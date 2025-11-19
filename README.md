@@ -42,6 +42,16 @@ Backend: http://localhost:8000
 Frontend preview: http://localhost:4173
 Prometheus metrics: http://localhost:8000/metrics
 
+### Bridging Hardware CSI Over Serial
+
+- Flash the ESP32 receiver with the latest firmware so it emits `CSI_JSON:` lines on the UART.
+- Keep the receiver attached to the host on `COM5` (adjust if your port differs).
+- Forward the serial stream into the backend: `uvicorn` must be running, then execute
+  ```powershell
+  python backend/scripts/csi_serial_bridge.py --port COM5 --backend http://127.0.0.1:8000
+  ```
+- Once the bridge is active the inference pipeline ingests live CSI data and the React dashboard reflects real samples in real time.
+
 ## Tests
 
 Backend tests use PyTest:
